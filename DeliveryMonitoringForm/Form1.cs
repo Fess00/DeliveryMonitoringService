@@ -13,7 +13,14 @@ namespace DeliveryMonitoringForm
             _client = new();
             _configLoader = new();
             SetSelectors();
-        }
+            regionSelector.DropDownStyle = ComboBoxStyle.DropDownList;
+            daySelector.DropDownStyle = ComboBoxStyle.DropDownList;
+            monthSelector.DropDownStyle = ComboBoxStyle.DropDownList;
+            yearSelector.DropDownStyle = ComboBoxStyle.DropDownList;
+            hourSelector.DropDownStyle = ComboBoxStyle.DropDownList;
+            minuteSelector.DropDownStyle = ComboBoxStyle.DropDownList;
+            secondSelector.DropDownStyle = ComboBoxStyle.DropDownList;
+    }
 
         public void SetSelectors()
         {

@@ -8,6 +8,6 @@
 
         public District District { get; set; }
 
-        public DeliveryDateTime Date { get; set; }
+        public string Date { get; set; }
     }
 }

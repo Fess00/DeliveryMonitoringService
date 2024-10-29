@@ -1,6 +1,8 @@
 ﻿using DeliveryMonitoringDataModel;
 using DeliveryMonitoringService.Services;
 using Microsoft.AspNetCore.Mvc;
+using System;
+using System.Globalization;
 using System.Text;
 
 namespace DeliveryMonitoringService.Controllers
@@ -16,20 +18,28 @@ namespace DeliveryMonitoringService.Controllers
             _logService = logService;
         }
 
-        [HttpGet]
-        public IEnumerable<Order> Get([FromQuery] string cityDistrict, [FromQuery] string firstDeliveryDateTime, [FromQuery] List<Order> orders)
+        [HttpPost]
+        public IActionResult Get([FromBody] List<Order> orders, [FromQuery] string cityDistrict, [FromQuery] string firstDeliveryDateTime)
         {
             District filterDistrict = (District)Enum.Parse(typeof(District), cityDistrict);
-            DeliveryDateTime filterDate = new();
-            filterDate.SetDate(firstDeliveryDateTime);
-            orders.Where(x => x.District == filterDistrict).Where(x => x.Date.DT >= filterDate.DT && x.Date.DT <= x.Date.DT.AddMinutes(30)).ToList();
+            var filtered = orders.Where(x => x.District == filterDistrict)
+                .Where(x =>
+                {
+                    if (DateTime.TryParseExact(x.Date, "yyyy-MM-dd HH:mm:ss", CultureInfo.CurrentCulture, DateTimeStyles.None, out var date)
+                    && DateTime.TryParseExact(firstDeliveryDateTime, "yyyy-MM-dd HH:mm:ss", CultureInfo.CurrentCulture, DateTimeStyles.None, out var filter))
+                    {
+                        return date >= filter && date <= date.AddMinutes(30);
+                    }
+                    return false;
+                });
+                
 
             _logService.Log($"Фильтрация данных. Район: {cityDistrict} Дата и время: {firstDeliveryDateTime}");
-            return orders;
+            return Ok(filtered);
         }
 
         [HttpGet("getlog")]
-        public IActionResult DownloadTextFile()
+        public IActionResult Log()
         {
             _logService.Log("Возвращение логов клиенту.");
             using StreamReader reader = new StreamReader(

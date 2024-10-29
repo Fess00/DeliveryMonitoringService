@@ -1,5 +1,5 @@
 {
     "orderDataFile" : "DB.json",
-    "resultFile" : "result.txt",
+    "resultFile" : "result.json",
     "logFile" : "Log.txt"
 }

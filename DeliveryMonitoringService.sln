@@ -8,12 +8,12 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DeliveryMonitoringService",
 		{8421C2AF-498C-4A42-B9EB-E6E1ABFC04A5} = {8421C2AF-498C-4A42-B9EB-E6E1ABFC04A5}
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DeliveryMonitoringForm", "DeliveryMonitoringForm\DeliveryMonitoringForm.csproj", "{2BA7F173-3D42-490C-9B9E-888C49D6C78E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DeliveryMonitoringForm", "DeliveryMonitoringForm\DeliveryMonitoringForm.csproj", "{2BA7F173-3D42-490C-9B9E-888C49D6C78E}"
 	ProjectSection(ProjectDependencies) = postProject
 		{8421C2AF-498C-4A42-B9EB-E6E1ABFC04A5} = {8421C2AF-498C-4A42-B9EB-E6E1ABFC04A5}
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DeliveryMonitoringDataModel", "DeliveryMonitoringDataModel\DeliveryMonitoringDataModel.csproj", "{8421C2AF-498C-4A42-B9EB-E6E1ABFC04A5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DeliveryMonitoringDataModel", "DeliveryMonitoringDataModel\DeliveryMonitoringDataModel.csproj", "{8421C2AF-498C-4A42-B9EB-E6E1ABFC04A5}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
